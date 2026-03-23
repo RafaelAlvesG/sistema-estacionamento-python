@@ -199,7 +199,7 @@ def entrada():
     # Atualiza valores dentro do banco de dados
     cursor.execute("""
     UPDATE movimentacao
-    SET data_entrada = ?, hora_entrada = ?, pendencia = 'Sim' WHERE placa = ?
+    SET data_entrada = ?, hora_entrada = ? WHERE placa = ?
     """, (data_entrada, hora_entrada, placa))
     
     
@@ -232,7 +232,7 @@ def saida():
     if not registro:
         messagebox.showerror("Erro", "Veículo não encontrado, não deu entrada ou já registrou saída.")
         return
-        
+    
     if registro[2] == 'Sim':
         messagebox.showerror("Erro", "Este veículo já possui uma saída registrada e está com pagamento pendente.")
         return
